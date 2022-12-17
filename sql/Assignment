@@ -1,0 +1,194 @@
+use database DEMODATABASE;
+create table Agents (Agent_code char(30),
+                    Agent_Name Varchar(40),
+                    Working_Area Char(35),
+                    Commission Number(10,2) Default 0.05,
+                     Phone_No Varchar(15),
+                     Country Varchar(25));
+                     
+ select *from Agents;
+ 
+insert into  Agents values('age3',
+                  'Ramesh',
+                  'hyderabad',
+                  '67897.90',
+                  '6789056',
+                  'canada');
+insert into Agents(agent_name,phone_no)
+values('hareesh','8755434343');
+
+Alter table Agents ADD Email Varchar(100);       
+Alter table Agents add DOB char AFTER Agent_Name;
+select *from Agents;
+show tables;
+create view from Agents;
+
+CREATE TABLE  "AS_CONSUMER_COMPLAINTS" 
+   (	
+      "DATE_RECEIVED" VARCHAR(30),
+      "PRODUCT NAME" VARCHAR2(40) , 
+	  "SUB_PRODUCT" VARCHAR2(100) , 
+	  "ISSUE" VARCHAR2(100), 
+      "SUB_ISSUE" VARCHAR2(1O0),
+      "CONSUMER COMPLAINT NARRATIVE" STRING,
+      "Company Public Response" STRING,
+      "Company" VARCHAR(100),
+      "State Name" CHAR(4),
+      "Zip Code" STRING,
+      "Tags" VARCHAR(30),
+      "Consumer Consent Provided" CHAR(25),
+       "Submitted via" STRING,
+      "Date Sent to Company" STRING,
+     "Company Response to Consumer" VARCHAR(100),
+     "Timely Response" CHAR(4),
+     "CONSUMER DISPUTED" CHAR(4),
+     "COMPLAINT_ID" NUMBER(12,0) NOT NULL PRIMARY KEY
+);
+
+show tables;
+show "AK_CONSUMER_COMPLAINTS";
+select * from AK_CONSUMER_COMPLAINTS;
+
+create table sales(InvoiceDate	
+                   Make	CountryName	IsDealer	SalePrice	CostPrice	TotalDiscount	DeliveryCharge	SpareParts	LaborCost	ClientName	Model	Color	ReportingYear	ReportingMonth	Registration_Date	VehicleType	InvoiceNumber;
+                  select * from "AR_CONSUMER_COMPLAINTS";
+                   DROP  table"AK_CONSUMER_COMPLAINTS";
+                   DROP  table"AS_CONSUMER_COMPLAINTS";
+                   
+                   CREATE or replace table AK_CONSUMER_COMPLAINTS
+
+(    DATE_RECEIVED VARCHAR(30),
+     PRODUCT_NAME VARCHAR2(50),
+     SUB_PRODUCT VARCHAR2(100),
+     ISSUE VARCHAR2(100),
+     SUB_ISSUE VARCHAR2(100),
+     CONSUMER_COMPLAINT_NARRATIVE varchar(100),
+     Company_Public_Response string,
+     Company VARCHAR(100),
+     State_Name CHAR(4),
+     Zip_Code  number(38,0),
+     Tags VARCHAR(40),
+     Consumer_Consent_Provided CHAR(25),
+     Submitted_via varchar(50),
+     Date_Sent_to_Company varchar(50),
+     Company_Response_to_Consumer VARCHAR(40),
+     Timely_Response CHAR(4),
+     CONSUMER_DISPUTED CHAR(4),
+     COMPLAINT_ID NUMBER(12,0) NOT NULL PRIMARY KEY
+);
+select current_date;
+select current_time;
+                   select current_time, current_date;
+select current_timestamp;  
+select CONVERT_TIMEZONE ('UST', CURRENT_TIMESTAMP) AS UST_TIMEZONE;   
+ALTER SESSION SET TIMESTAMP_TYPE_MAPPING =TIMESTAMP_ntz;
+                   
+select *from  AK_CONSUMER_COMPLAINTS;        
+                   select distinct * from  AK_CONSUMER_COMPLAINTS ;
+select product_name from  AK_CONSUMER_COMPLAINTS;    
+                   select zip_code from  AK_CONSUMER_COMPLAINTS;
+                   select tags from  AK_CONSUMER_COMPLAINTS;
+                   select submitted_via from  AK_CONSUMER_COMPLAINTS;
+                   select * from  AK_CONSUMER_COMPLAINTS where product_name LIKE 'Bank%';
+                   select * from  AK_CONSUMER_COMPLAINTS where product_name LIKE '%account%';
+                   select product_name,issue from  AK_CONSUMER_COMPLAINTS;
+                   select distinct product_name from  AK_CONSUMER_COMPLAINTS;
+                   select distinct issue from  AK_CONSUMER_COMPLAINTS;
+                   select * from  AK_CONSUMER_COMPLAINTS where issue='closing account';
+                   select * from  AK_CONSUMER_COMPLAINTS where product_name LIKE 'Ba%';
+                   select * from  AK_CONSUMER_COMPLAINTS where product_name LIKE '%loan';
+                   create or replace table AK_property_sales(
+                   id varchar(40),
+                   area varchar(120),
+                   Neighbourhood string,
+                   Building_class_category string,
+                   Address string,
+                   zipcode number(38,0),
+                   land_square_feet varchar(100),
+                   grass_square_feet varchar(80),
+                   year_built varchar(50),
+                   sale_date varchar(60),
+                     sale_price varchar(60)
+                   );
+                   select * from AK_property_sales;
+                   create or replace table AS_store_cities(
+                   store_id varchar(40),
+                   storetype_id varchar(50),
+                   store_size string,
+                   city_id varchar(60),
+                     state_state_abr_city string,
+                     lat_long varchar(50)
+                     );
+                   select * from AS_store_cities;
+                   create or replace table AK_British_cars(
+                     Invoice_Date varchar(10),
+                     Make varchar(50),
+                     CountryName  varchar(50),	
+                     IsDealer  varchar(50),
+                     SalePrice  varchar(50),
+                     CostPrice	 varchar(50),
+                     TotalDiscount	 varchar(50),
+                     DeliveryCharge	 varchar(50),
+                     Spare_Parts	 number(10,2),
+                     Labor_Cost	 number(10,2),
+                     Client_Name	 varchar(50),
+                     Model  varchar(50),	
+                     Color varchar(50),
+                     Reporting_Year  varchar(10),	
+                     Reporting_Month	 varchar(10),
+                     Registration_Date  varchar(10),	
+                     Vehicle_Type  varchar(50),
+                     Invoice_Number  varchar(50),	
+                     Country_ISO_Code	 varchar(50),
+                     Outer_Postode  varchar(50),	
+                     Region  varchar(50));
+                   select * from AK_British_cars;
+                   create or replace table AR_conumer_complaints_copy as select * from AK_consumer_complaints where product_name;
+                   select * from AR_conumer_complaints_copy;
+                   select * from Agents;
+                   create or replace table Agents_copy like Agents;
+                   Alter table  Agents_copy Add column age int not null;
+                   create or replace table Agents_copy as select * from Agents;
+                   describe table Agents_copy;
+                   select * from Agents_copy;
+                   create or replace table Agents_copy like Agents;
+                   Alter table  Agents_copy Add primary key(aadhar);
+                   Alter table Agents_copy Drop aadhar;
+                   update table Agents_copy set email='123' where email is null;
+                   alter table Agents_copy_with_primary_key alter constraint a_primary_key_constraint rely;
+                   
+                   
+                   create or replace table AS_final_sales(
+                   order_id varchar(50) primary key,
+                     order_date varchar(50),
+                     ship_date varchar(50),
+                     ship_mode string,
+                     customer_name string,
+                     segment string,
+                     state string,
+                     country string,
+                     market string,
+                     region string,
+                     product_id varchar(50),
+                     category string,
+                     sub_category string,
+                     product_name string,
+                     sales number,
+                     quantity int,
+                     discount float,
+                     profit float,
+                     shipping_cost float,
+                     order_priority varchar(60),
+                     year int
+                   );
+                   select * from  AS_final_sales;
+                   create or replace table  AS_final_sales_copy as select * from  AS_final_sales;
+                   Alter AS_final_sales add primary key(product_id);
+                   select * from  AS_final_sales_copy;
+                   
+                   select * from  AS_final_sales_copy ;
+                   select Try_to_date ('1-1-2011');
+                   alter session set Date_input_format ='dd-mm-yyyy';
+                   describe table AS_final_sales_copy ;
+                   select to_char(to_date('11-11-2011'),'mon-yyyy') AS mon_yyyy;
+                   select to_char(to_date('11-11-2011'),'mm-yyyy') as mm_yyyy;
